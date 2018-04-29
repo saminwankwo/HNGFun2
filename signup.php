@@ -1,6 +1,7 @@
 <?php 
 require_once('country-array.php');
 include_once("header.php");
+require 'db.php';
 
 function custom_styles()
 {
@@ -45,31 +46,31 @@ _END;
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group pr-3">
-						    <label for="firstname">First Name</label>
-						    <input type="text" class="form-control" id="firstname" aria-describedby="nameerr" placeholder="John">
+						    <label for="fullname">Fullname</label>
+						    <input type="text" class="form-control" name="fullname" id="fullname" aria-describedby="nameerr" placeholder="John">
 						    <!-- <small id="emailHelp" class="has-danger form-text">We'll never share your email with anyone else.</small> -->
 					    </div>
 					  
 					</div>
-					<div class="col-sm-6">
-						<div class="form-group pl-3">
-						    <label for="lastname">Last Name</label>
-						    <input type="text" class="form-control" id="lastname" placeholder="Doe">
-						  </div>
-					</div>
+                    <div class="col-sm-6">
+                        <div class="form-group pl-3">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="JohnDoe">
+                        </div>
+                    </div>
 				
 					<div class="col-sm-6">
 						<div class="form-group pr-3">
 						    <label for="email">Email Address</label>
-						    <input type="email" class="form-control" id="email" aria-describedby="mailerr" placeholder="johndoe@mail.com">
+						    <input type="email" class="form-control" name="email" id="email" aria-describedby="mailerr" placeholder="johndoe@mail.com">
 						    <!-- <small id="mailerr" class="has-danger form-text">We'll never share your email with anyone else.</small> -->
 					    </div>
 					  
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group pl-3">
-						    <label for="phone">Last Name</label>
-						    <input type="telephone" class="form-control" id="phone" placeholder="+2348012345678">
+						    <label for="phone">Phone</label>
+						    <input type="telephone" class="form-control" name="phone" id="phone" placeholder="+2348012345678">
 						  </div>
 					</div>
 

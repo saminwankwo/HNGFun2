@@ -6,15 +6,14 @@
  * Time: 5:52 PM
  */
 
-require 'db.php';
-
 $fullnameError = "";
-$username = "";
+$usernameError = "";
 $emailError = "";
 $nationalityError = "";
-$cityError = "";
+$stateError = "";
 $phoneError = "";
 $passwordError = "";
+$confirmPasswordError = "";
 
 
 if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
@@ -27,11 +26,11 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
         }
     }
 
-    // username
+    //Data Sanitization and Validation
     if($_POST['username'] != ""){
         $_POST['username'] = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
         if ($_POST['username'] == ""){
-            $usernameError = "<span class='invalid'>Please enter a username.</span>";
+            $usernameError = "<span class='invalid'>Please enter your username.</span>";
         }
     }
 
@@ -51,13 +50,15 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
         }
     }
 
-    // city
-    if($_POST['city'] != ""){
-        $_POST['city'] = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
-        if ($_POST['city'] == ""){
-            $cityError = "<span class='invalid'>Please choose your city.</span>";
+    // state
+    if($_POST['state'] != ""){
+        $_POST['state'] = filter_var($_POST['state'], FILTER_SANITIZE_STRING);
+        if ($_POST['state'] == ""){
+            $stateError = "<span class='invalid'>Please choose your city.</span>";
         }
-    }// password
+    }
+
+    // password
     if($_POST['password'] != ""){
         $_POST['password'] = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
         if ($_POST['password'] == ""){
@@ -65,10 +66,22 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
         }
     }
 
+    // confirm_password
+    if($_POST['confirm_password'] != ""){
+        $_POST['confirm_password'] = filter_var($_POST['confirm_password'], FILTER_SANITIZE_STRING);
+        if ($_POST['confirm_password'] == ""){
+            $confirmPasswordError = "<span class='invalid'>Please enter a password.</span>";
+        }
+
+        if ($_POST['confirm_password'] != $_POST['password']) {
+            $confirmPasswordError = "<span class='invalid'>Password mismatch, please enter the same password.</span>";
+        }
+    }
+
     // valid phone number
-    if($_POST['phonenumber'] != ""){
-        $_POST['phonenumber'] = filter_var($_POST['phonenumber'], FILTER_SANITIZE_STRING);
-        if($_POST['phonenumber'] == ""){
+    if($_POST['phone'] != ""){
+        $_POST['phone'] = filter_var($_POST['phone'], FILTER_SANITIZE_STRING);
+        if($_POST['phone'] == ""){
             $phoneError = "<span class='invalid'>Please enter a valid phone number</span>";
         }
     }
@@ -76,17 +89,16 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
     //Insert Data into users_data Database
     if ($fullnameError == "" && $usernameError == ""
         && $emailError == "" && $nationalityError == ""
-        && $cityError == "" && $phoneError == ""
-        && $passwordError == "") {
-
+        && $stateError == "" && $phoneError == ""
+        && $passwordError == "" && $confirmPasswordError == "") {
 
         //Insert user's Data
         $fullname = $_POST['fullname'];
         $username = $_POST['username'];
-        $phonenumber = $_POST['phonenumber'];
+        $phonenumber = $_POST['phone'];
         $email = $_POST['email'];
         $nationality = $_POST['nationality'];
-        $city = $_POST['city'];
+        $city = $_POST['state'];
         $password = $_POST['password'];
 
         $intern_data = array(':fullname' => $fullname,
@@ -97,6 +109,9 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
             ':city' => $city,
             ':password' => $password
         );
+
+        var_dump('I got here');
+        die;
 
         $query = 'INSERT INTO users_data ( fullname, username, phonenumber, email, nationality, city, password)
               VALUES (
@@ -110,7 +125,7 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
               );';
 
         try {
-            $q = $conn->prepare($query);
+            $q = $connection->prepare($query);
             if ($q->execute($intern_data) == true) {
                 $success = true;
             };
