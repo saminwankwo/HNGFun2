@@ -30,7 +30,7 @@ include_once("header.php");
 
 <div class="my-5 py-5">
 	<div class="container container-fluid bg-white my-5 py-5">
-		<h2>Ready to get started register now</h2>
+		<h2>Ready to get started Register now</h2>
 		<div class="d-flex justify-content-center mt-5">
 		  <form class="w-75">
 		  	<label class="mb-0 pb-0">Email</label>
