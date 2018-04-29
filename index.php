@@ -9,7 +9,7 @@ include_once("header.php");
 </div>
 
 <div class="container container-fluid bg-white text-center mt-5 px-5 pt-5">
-  <h2>What is HNG Internship</h2>
+  <h2>What is HNG Internship?</h2>
   <p class="text-secondary mx-5 px-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -19,7 +19,7 @@ include_once("header.php");
 </div>
 
 <div class="container container-fluid bg-white text-center my-5 px-5 py-5">
-  <h2>Why the HNG Internship</h2>
+  <h2>Why the HNG Internship?</h2>
   <p class="text-secondary mx-5 px-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
