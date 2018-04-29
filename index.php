@@ -39,7 +39,7 @@ include_once("header.php");
 		  	    <span class="input-group-text bg-transparent px-5 font-icon" id="basic-addon1">@</span>
 		  	  </div>
 		  	  <input type="text" class="form-control form-control-lg rounded-right" placeholder="johndoe@example.com" aria-label="Username" aria-describedby="basic-addon1">
-		  	  <a href="https://join.slack.com/t/hnginternship4/shared_invite/enQtMzQwOTU4NzAwNjExLWQ0NWFlZDBmNjRkMTRkNGZmYjQ5MzA0YmUzZDBiZDEzOTBkZGE1ZWUxZTI1YjkxMTQ5N2MyZTMyMzBmMTEyOWM" class="btn btn-primary btn-lg ml-2 rounded">
+		  	  <a href="#" class="btn btn-primary btn-lg ml-2 rounded">
 		  	  	<h2 class="font-weight-normal text-white">Sign Up</h2>
 		  	  </a>
 		  	</div>
