@@ -5,8 +5,8 @@
  * Date: 4/29/18
  * Time: 5:52 PM
  */
-
-$fullnameError = "";
+$firstnameError = "";
+$lastnameError = "";
 $usernameError = "";
 $emailError = "";
 $nationalityError = "";
@@ -19,10 +19,18 @@ $confirmPasswordError = "";
 if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
 
     //Data Sanitization and Validation
-    if($_POST['fullname'] != ""){
-        $_POST['fullname'] = filter_var($_POST['fullname'], FILTER_SANITIZE_STRING);
-        if ($_POST['fullname'] == ""){
-            $fullnameError = "<span class='invalid'>Please enter your fullname.</span>";
+    if($_POST['firstname'] != ""){
+        $_POST['firstname'] = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+        if ($_POST['firstname'] == ""){
+            $lastnameError = "<span class='invalid'>Please enter your firstname.</span>";
+        }
+    }
+
+        //Data Sanitization and Validation
+    if($_POST['lastname'] != ""){
+        $_POST['lastname'] = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+        if ($_POST['lastname'] == ""){
+            $lastnameError = "<span class='invalid'>Please enter your lastname.</span>";
         }
     }
 
@@ -87,13 +95,14 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
     }
 
     //Insert Data into users_data Database
-    if ($fullnameError == "" && $usernameError == ""
+    if ($firstnameError == "" && $lastnameError == "" && $usernameError == ""
         && $emailError == "" && $nationalityError == ""
         && $stateError == "" && $phoneError == ""
         && $passwordError == "" && $confirmPasswordError == "") {
 
         //Insert user's Data
-        $fullname = $_POST['fullname'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
         $username = $_POST['username'];
         $phonenumber = $_POST['phone'];
         $email = $_POST['email'];
@@ -101,7 +110,8 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
         $city = $_POST['state'];
         $password = $_POST['password'];
 
-        $intern_data = array(':fullname' => $fullname,
+        $intern_data = array(':firstname' => $firstname,
+            ':lastname' => $lastname,
             ':username' => $username,
             ':phonenumber' => $phonenumber,
             ':email' => $email,
@@ -113,9 +123,10 @@ if(isset($_POST['submit']) && isset($_FILES["file"]["type"])){
         var_dump('I got here');
         die;
 
-        $query = 'INSERT INTO users_data ( fullname, username, phonenumber, email, nationality, city, password)
+        $query = 'INSERT INTO users_data ( firstname,lastname, username, phonenumber, email, nationality, city, password)
               VALUES (
-                  :fullname,
+                  :firstname,
+                  :lastname,
                   :username,
                   :phonenumber,
                   :email,
