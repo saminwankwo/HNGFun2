@@ -25,17 +25,16 @@ SET time_zone = "+00:00";
 -- Table structure for table `users_data`
 --
 
-CREATE TABLE `users_data` (
-`user_id` int(10) NOT NULL AUTO_INCREMENT,
-`fullname` varchar(255) NOT NULL,
-`username` varchar (255) NOT NULL,
-`phonenumber` int (11) NOT NULL,
-`email` varchar (50) NOT NULL,
-`nationality` varchar (50) NOT NULL,
-`city` varchar (50) NOT NULL,
-`password` varchar (255) NOT NULL,
-`reset_link` varchar (255) NOT NULL,
-`reset_link_expiry` VARCHAR (255) NOT NULL,
-PRIMARY KEY (`user_id`)
+CREATE TABLE `user` (
+  `id` int(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `username` varchar(255) default NULL,
+  `password` varchar(255) NOT NULL,
+  `time` timestamp NOT NULL default now(),
+  `nationality` varchar(50) NOT NULL,
+PRIMARY KEY (`id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
