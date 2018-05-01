@@ -66,10 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($_POST['confirm_password'] == ""){
                 $confirmPasswordError = "<span class='invalid'>Please enter a password.</span>";
             }
-
-            if ($_POST['confirm_password'] != $_POST['password']) {
-                $confirmPasswordError = "<span class='invalid'>Password mismatch, please enter the same password.</span>";
-            }
         }
 
         // valid phone number
@@ -97,7 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $intern_data = array(
                 ':firstname' => $firstname,
                 ':lastname' => $lastname,
-                ':username' => $username,
                 ':phone' => $phone,
                 ':email' => $email,
                 ':nationality' => $nationality,
@@ -199,7 +194,7 @@ _END;
         <p class="description">Just a few clicks away from joining the biggest software development internship in Africa</p>
     </div>
     <div class="main-form ml-auto mr-auto">
-        <form>
+        <form method="post">
             <p class="form-text">Already have an account? <a href="login.php">Log in</a></p>
             <div class="row">
                 <div class="col-sm-6">
@@ -213,7 +208,7 @@ _END;
                 <div class="col-sm-6">
                     <div class="form-group pl-sm-3">
                         <label for="lastname">Last Name</label>
-                        <input class="form-control" id="lastname" name="firstname" placeholder="Doe" required="required" type="text">
+                        <input class="form-control" id="lastname" name="lastname" placeholder="Doe" required="required" type="text">
                     </div>
                 </div>
 
