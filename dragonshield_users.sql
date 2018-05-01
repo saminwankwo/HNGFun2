@@ -31,10 +31,12 @@ CREATE TABLE `user` (
   `phone` int(11) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
-  `username` varchar(255) default NULL,
   `password` varchar(255) NOT NULL,
   `time` timestamp NOT NULL default now(),
   `nationality` varchar(50) NOT NULL,
 PRIMARY KEY (`id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `user`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;

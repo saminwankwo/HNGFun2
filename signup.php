@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nationality = $_POST['nationality'];
             $password = $_POST['password'];
 
-            $intern_data = array(
+            $user_data = array(
                 ':firstname' => $firstname,
                 ':lastname' => $lastname,
                 ':phone' => $phone,
@@ -111,9 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             try {
                 $q = $conn->prepare($query);
-                if ($q->execute($intern_data) == true) {
-                    $success = true;
-                };
+                $q->execute($user_data);
             } catch (PDOException $e) {
                 throw $e;
             }
