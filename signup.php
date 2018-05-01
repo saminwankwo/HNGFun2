@@ -13,8 +13,6 @@ $confirmPasswordError = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_POST['submit'])) {
-        var_dump('I got here');
-        die;
         if($_POST['firstname'] != ""){
             $_POST['firstname'] = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
             if ($_POST['firstname'] == ""){
